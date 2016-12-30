@@ -1,0 +1,46 @@
+Data Science Capstone Project - Peer Assessment2
+========================================================
+author: Rajesh D
+date: `r date()`
+autosize: true
+
+Course Project Objective
+========================================================
+The goal of this project is to demonstrate an application that predicts the next word when the users most likely want to type. This is the capstone project for the Data Science specialization held by Johns Hopkins University and partnered with SwiftKey. The main use case for this application is text messaging on the mobile phones.
+
+- Given a word / phrase as input by an end user then the application will try to predict the next word.
+- The application contains the UI that allows the users to input a word or phrase and it is built with shiny app UI. 
+- And this presentation is created as part of the requirement for the Data Science Capstone class. 
+
+Data Sources and source codes
+========================================================
+The data sources for this project can be downloaded using the link below: https://d396qusza40orc.cloudfront.net/dsscapstone/dataset/Coursera-SwiftKey.zip
+
+Only the files starting with en_US (enlglish - US) are used for building the model and they are: en_US.blogs.txt, en_US.news.txt and en_US.twitter. Below are the links to shiny app and source codes.
+- Shiny Application link : [Shiny Application - Predict Next Word](https://rajd216.shinyapps.io/dscapproj/)
+- Github Link : [Source Codes](https://github.com/rajd216/DataScienceCapstone)
+
+Shiny app code is written using single file (app.R) option.
+
+Data Cleaning and N-grams Prediction model
+========================================================
+1. Prior to building the word prediction model, data is first sampled from actual large data sets and combined them further processing.
+2. Then the text is transformed by cleaning the data - removing numbers, stopwords, steming, punctuation, whitespaces and converting them to lowercase and then the data is tokenized called n-grams.
+3. These n-grams are then transferred to the frequency tables.
+4. The resulting data frames saved in .rds format are used to predict the next word(s) when input given by users.
+
+Note: As running with memory issues and slow preocessing with "tm" package, "quanteda" package is used to build the model.
+
+Next Word Prediction - Shiny App Usage
+========================================================
+```{r,echo = FALSE, fig.width = 8,fig.height = 4}
+library(png)
+library(grid)
+img <- readPNG("dscapheader.png")
+grid.raster(img)
+```
+- Wait for few seconds to load the app.
+- After entering the text, Wait for 10 to 20 seconds.
+- Then the next predicted / suggested words are then displayed in the main panel.
+- A slider is also provided to display a maximum of 10 predicted / suggested words, returns NA if no match is found.
+
